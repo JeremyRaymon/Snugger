@@ -31,5 +31,6 @@ Route::post('/login', [UserController::class, 'loginUser']);
 Route::get('/logout', [UserController::class, 'logoutUser']);
 Route::post('/register', [UserController::class, 'createUser']);
 
-
-// test
+Route::get('/productList', function(){
+    return view('productListPage');
+});
