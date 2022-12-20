@@ -30,3 +30,6 @@ Route::get('/register', function () {
 Route::post('/login', [UserController::class, 'loginUser']);
 Route::get('/logout', [UserController::class, 'logoutUser']);
 Route::post('/register', [UserController::class, 'createUser']);
+
+Route::get('/addProduct', [ProductController::class, 'view']);
+Route::post('/addProduct', [ProductController::class, 'addProduct']);

@@ -91,7 +91,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="/viewProducts">View Products</a></li>
-                      <li><a class="dropdown-item" href="#">Add Product</a></li>
+                      <li><a class="dropdown-item" href="/addProduct">Add Product</a></li>
                       <li>
                         <hr class="dropdown-divider" />
                       </li>
