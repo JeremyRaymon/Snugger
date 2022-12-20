@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
+    public function viewProducts(){
+        $products = Product::all();
+
+        return view('viewProductsAdmin', ['products'=>$products]);
+    }
+
     public function view(){
         $products = Product::all();
 
