@@ -26,13 +26,13 @@
                         <td>{{$item->desc}}</td>
                         <td><img width="200px" height="200px" src="{{asset('/public/images/' . $item->img . '.png')}}" alt="Image not found"></td>
                         <td>
-                            <form action="/delete-movie/{{$item->id}}" method="post">
+                            <form action="/updateProduct" method="get">
                                 @csrf
                                 <input type="submit" value="Update" class="btn btn-dark">
                             </form>
                         </td>
                         <td>
-                            <form action="/delete-movie/{{$item->id}}" method="post">
+                            <form action="/deleteProduct/{{$item->id}}" method="post">
                                 @csrf
                                 <input type="submit" value="Delete" class="btn btn-dark">
                             </form>
