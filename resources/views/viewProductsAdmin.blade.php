@@ -26,7 +26,7 @@
                         <td>{{$item->desc}}</td>
                         <td><img width="200px" height="200px" src="{{asset('/public/images/' . $item->img . '.png')}}" alt="Image not found"></td>
                         <td>
-                            <form action="/updateProduct" method="get">
+                            <form action="/updateProduct/{{$item->id}}" method="get">
                                 @csrf
                                 <input type="submit" value="Update" class="btn btn-dark">
                             </form>

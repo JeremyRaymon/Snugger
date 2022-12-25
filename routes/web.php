@@ -32,10 +32,12 @@ Route::get('/logout', [UserController::class, 'logoutUser']);
 Route::post('/register', [UserController::class, 'createUser']);
 
 Route::get('/admin/viewProducts', [ProductController::class, 'viewProducts']);
+
 Route::get('/addProduct', [ProductController::class, 'view']);
 Route::post('/addProduct', [ProductController::class, 'addProduct']);
-Route::get('/updateProduct', function (){
+
+Route::get('/updateProduct/{id}', function (){
     return view('updateProduct');
 });
-Route::post('/updateProduct', [ProductController::class, 'updateProduct']);
+Route::post('/updateProduct/{id}', [ProductController::class, 'updateProduct']);
 Route::post('deleteProduct/{id}',[ProductController::class, 'deleteProduct']);
