@@ -21,15 +21,18 @@
                             <input type="text" name="category" placeholder="Input Category" class="mt-1 mb-1">
                         </div>
                     </div>
-                    
-                    <label for="InserImage">Insert Product Image: </label><input type="file" name="image" id="insertImage" class="mt-3 mb-3">
-                    
-                
+
+                    <label for="InserImage">Insert Product Image: </label><input type="file" name="img" id="insertImage" class="mt-3 mb-3">
+
+
                     <br><input type="submit" value="Insert" class="btn" style="background-color: #F4E04D">
+                    @if ($errors->any())
+                        <div class="form-text">{{ $errors->first() }}</div>
+                    @endif
                 </form>
             </div>
-        </div>    
-    </div>    
+        </div>
+    </div>
 </div>
 
 @endsection

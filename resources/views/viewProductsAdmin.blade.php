@@ -24,12 +24,9 @@
                         <td>{{$item->price}}</td>
                         <td>{{$item->category}}</td>
                         <td>{{$item->desc}}</td>
-                        <td><img width="200px" height="200px" src="{{asset('/public/images/' . $item->img . '.png')}}" alt="Image not found"></td>
+                        <td><img width="200px" height="200px" src="{{asset('/storage/images/' . $item->img . '.png')}}" alt="Image not found"></td>
                         <td>
-                            <form action="/updateProduct/{{$item->id}}" method="get">
-                                @csrf
-                                <input type="submit" value="Update" class="btn btn-dark">
-                            </form>
+                            <a href="/updateProduct/{{$item->id}}" class="btn btn-dark">Update</a>
                         </td>
                         <td>
                             <form action="/deleteProduct/{{$item->id}}" method="post">
@@ -37,7 +34,7 @@
                                 <input type="submit" value="Delete" class="btn btn-dark">
                             </form>
                         </td>
-                    </tr>  
+                    </tr>
                 @endforeach
             </tbody>
         </table>
@@ -52,7 +49,7 @@
         @else
             <a href="{{$products->url($i)}}">{{$i}}</a>
         @endif
-        
+
     @endfor
     <a href="{{$products->nextPageUrl()}}">&raquo;</a>
 </div> --}}
@@ -80,7 +77,7 @@
                     <td>{{$item->desc}}</td>
                     <td><img src="" alt=""></td>
                     <td></td>
-                </tr>  
+                </tr>
             @endforeach
         </tbody>
     </table>

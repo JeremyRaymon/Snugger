@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,8 +37,10 @@ Route::get('/admin/viewProducts', [ProductController::class, 'viewProducts']);
 Route::get('/addProduct', [ProductController::class, 'view']);
 Route::post('/addProduct', [ProductController::class, 'addProduct']);
 
-Route::get('/updateProduct/{id}', function (){
-    return view('updateProduct');
+Route::get('/updateProduct/{id}', function ($id){
+    $product = Product::find($id);
+
+    return view('updateProduct', ['products' => $product]);
 });
 Route::post('/updateProduct/{id}', [ProductController::class, 'updateProduct']);
 Route::post('deleteProduct/{id}',[ProductController::class, 'deleteProduct']);

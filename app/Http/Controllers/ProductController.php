@@ -27,7 +27,6 @@ class ProductController extends Controller
             'desc' => 'required',
             'img' => 'required',
             'category' => 'required',
-
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -35,8 +34,8 @@ class ProductController extends Controller
             return back()-> withErrors($validator);
         }
 
-        $file = $request -> file('image');
-        $fileName = time() . '.' . $file->getClientOriginalExtension();
+        $file = $request -> file('img');
+        $fileName = time();
         Storage::putFileAs('public/images',$file, $fileName);
 
         $add = new Product();
