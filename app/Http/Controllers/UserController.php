@@ -18,7 +18,7 @@ class UserController extends Controller
         ];
 
         if(Auth::attempt($credentials)) {
-            return view('home');
+            return redirect()->route('home');
         }
         return back()->withErrors("Wrong combination of Email and Password");
     }
@@ -60,5 +60,72 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/');
+    }
+
+    public function profile()
+    {
+        return view('profile.show');
+    }
+
+    public function editProfile()
+    {
+        return view('profile.edit');
+    }
+
+    public function updateProfile(Request $request, User $user)
+    {
+        $rules = [
+            'firstName' => 'required|min:3',
+            'lastName' => 'required|min:3',
+            'email' => 'required|email:rfc,dns|unique:users,email,' . $user->id,
+            'address' => 'min:6',
+            'phone' => 'min:12'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $user->firstName = $request->firstName;
+        $user->lastName = $request->lastName;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+
+        $user->updated_at = Carbon::now();
+
+        $user->save();
+
+        return redirect()->route('user.show');
+    }
+
+    public function changePassword()
+    {
+        return view('profile.change-password');
+    }
+
+    public function updatePassword(Request $request, User $user)
+    {
+        $rules = [
+            'password' => 'required|min:6|confirmed'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        if($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->updated_at = Carbon::now();
+
+        $user->save();
+
+        return redirect()->route('user.show');
     }
 }
