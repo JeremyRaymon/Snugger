@@ -31,6 +31,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <!--Splidejs (For Carousel)-->
+
+    {{-- Style --}}
+    <link rel="stylesheet" href="{{Storage::url('css/style.css')}}">
+
+    {{-- Icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    {{-- Jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous" async></script>
+
+    {{-- Java Script --}}
+    <script src="{{Storage::url('js/script.js')}}" async></script>
+
 </head>
 <body class="" style="background-color: #F4E04D">
     <!-- Navbar -->

@@ -34,3 +34,11 @@ Route::post('/register', [UserController::class, 'createUser']);
 Route::get('/productList', function(){
     return view('productListPage');
 });
+
+Route::get('/shoppingCart', function(){
+    return view('shoppingCart');
+});
+
+Route::get('/wishList', function(){
+    return view('wishList');
+});
