@@ -1,10 +1,10 @@
-.page-pagination > .btn {
+.page-pagination > a {
     margin: 0rem 0.3rem;
     opacity: 50%;
     transition: all 0.3s ease;
 }
 
-.page-pagination > .btn:hover {
+.page-pagination > a:hover {
     opacity: 100%;
 }
 
