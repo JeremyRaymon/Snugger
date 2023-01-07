@@ -7,24 +7,28 @@
         <section class="row">
 
             {{-- Product List --}}
+            @php
+                $totalProducts = 0;
+                $totalPrice = 0;
+            @endphp
             <div class="col">
-                @for ($i=0;$i<3; $i++)
+                @foreach ($cartItems as $item)
                     <div class="card mb-3 rounded product-card">
                         <div class="row">
                             <div class="col">
-                                <img src="{{asset('images/shoe.png')}}" class="img-fluid card-img-top"/>
+                                <img src="{{asset('images/' . $item->img)}}" class="img-fluid card-img-top"/>
                             </div>
                             <div class="col">
                                 <div class="card-body">
-                                    <p class="card-subtitle">Category</p>
-                                    <h5 class="card-title">Shoe Name</h5>
-                                    <p class="card-text m-0">Size : 20</p>
-                                    <p class="card-text">Price : Rp. 123.456.000,00</p>
+                                    <p class="card-subtitle">{{$item->category}}</p>
+                                    <h5 class="card-title">{{$item->name}}</h5>
+                                    <p class="card-text m-0">Size : {{$item->size}}</p>
+                                    <p class="card-text">Price : Rp. {{$item->price}},00</p>
                                     {{-- Product's Quantity --}}
                                     {{-- <form action="" method="post"> --}}
                                         <div class="input-group w-50">
                                             <button class="input-group-text text-center decrement-qty">-</button>
-                                            <input type="text" name="product-quantity" class="form-control text-center input-qty" value="1" readonly>
+                                            <input type="text" name="product-quantity" class="form-control text-center input-qty" value="{{$item->qty}}" readonly>
                                             <button class="input-group-text text-center increment-qty">+</button>
                                         </div>
                                     {{-- </form> --}}
@@ -33,7 +37,11 @@
                             </div>
                         </div>
                     </div>
-                @endfor
+                    @php
+                        $totalPrice += $item->price;
+                        $totalProducts+= $item->qty;
+                    @endphp
+                @endforeach
             </div>
 
             {{-- Transaction Details Card --}}
@@ -51,9 +59,12 @@
                                     <p class="card-text">Shipping</p>
                                 </div>
                                 <div class="col">
-                                    <p class="card-text">3 item(s)</p>
-                                    <p class="card-text">Rp. 123.456.000,00</p>
-                                    <p class="card-text">Rp. 12.345.600,00</p>
+                                    <p class="card-text">{{$totalProducts}} item(s)</p>
+                                    <p class="card-text">Rp. {{$totalPrice}},00</p>
+                                    @php
+                                        $tax = $totalPrice*10/100;
+                                    @endphp
+                                    <p class="card-text">Rp. {{$tax}},00</p>
                                     <p class="card-text">FREE</p>
                                 </div>
                             </div>
@@ -62,7 +73,7 @@
                                     <h5 class="card-text fw-bold">Total</h5>
                                 </div>
                                 <div class="col">
-                                    <h5 class="card-text fw-bold">Rp. 135.801.600,00</h5>
+                                    <h5 class="card-text fw-bold">Rp. {{$totalPrice + $tax}},00</h5>
                                 </div>
                             </div>
                         </div>

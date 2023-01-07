@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,10 +35,9 @@ Route::post('/register', [UserController::class, 'createUser']);
 
 Route::get('/productList', [ProductController::class, 'showAllProducts']);
 
-Route::get('/shoppingCart', function(){
-    return view('shoppingCart');
-});
+Route::get('/shoppingCart', [CartItemController::class, 'showCartItems']);
 
-Route::get('/wishList', function(){
-    return view('wishList');
-});
+Route::get('/wishList', [WishItemController::class, 'showWishItem']);
+
+Route::post('/addWishProduct/{id}', [WishItemController::class, 'addWishProduct']);
+ROute::post('/removeWishProduct/{id}',[WishItemController::class, 'removeWishProduct']);

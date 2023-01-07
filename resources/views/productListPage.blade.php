@@ -3,21 +3,47 @@
 <div class="container-fluid p-0">
     <div class="row m-5 p-5 d-flex align-items-center">
         <h2 class="text-center mb-5">Product List</h2>
+
         @foreach ($products as $product)
+            @php
+                $flag = false;    
+            @endphp
             <section class="col-3">
                 <div class="card m-3 mx-auto rounded">
-                    <button type="button" class="btn btn-danger btn-floating wish-icon">
-                        <i class="bi bi-heart-fill"></i>
-                    </button>
+                    @foreach ($wishItems as $item)
+                        @if ($item->productId == $product->id)
+                            <form action="/removeWishProduct/{{$product->id}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-floating wish-icon" style="opacity: 100%">
+                                    <i class="bi bi-heart-fill"></i>
+                                </button>
+                            </form>
+                            @php
+                            $flag = true;
+                            @endphp
+                            @break
+                        @endif
+                    @endforeach
+                    
+                    @if ($flag == false)
+                    <form action="/addWishProduct/{{$product->id}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-floating wish-icon">
+                            <i class="bi bi-heart-fill"></i>
+                        </button>
+                    </form>
+                    @endif
+
                     <img src="{{asset('images/' . $product->img)}}" class="img-fluid card-img-top"/>
                     <div class="card-body">
                     <hr>
-                        <p class="card-subtitle">Rp. {{$product->category}},00</p>
+                        <p class="card-subtitle">{{$product->category}}</p>
                         <h5 class="card-title">{{$product->name}}</h5>
-                        <p class="card-text">{{$product->price}}</p>
+                        <p class="card-text">Rp. {{$product->price}},00</p>
                     </div>
                 </div>
             </section>
+
         @endforeach
        
     </div>
