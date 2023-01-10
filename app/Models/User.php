@@ -42,6 +42,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function cartItems(){
+        return $this->hasMany(CartItem::class);
+    }
+
+    public function wishItems()
+    {
+        return $this->hasMany(WishItem::class);
+    }
+
     public function getNameAttribute()
     {
         return $this->firstName." ".$this->lastName;

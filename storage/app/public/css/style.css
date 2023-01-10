@@ -1,0 +1,33 @@
+.page-pagination > a {
+    margin: 0rem 0.3rem;
+    opacity: 50%;
+    transition: all 0.3s ease;
+}
+
+.page-pagination > a:hover {
+    opacity: 100%;
+}
+
+.transaction-card {
+    background-color: #332d2d;
+    height: max-content;
+}
+
+.checkout-btn,
+.checkout-btn:hover {
+    background-color: #f4e04d;
+    color: #332d2d;
+    transition: all 0.3s ease;
+}
+
+.wish-icon {
+    opacity: 40%;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transition: all 0.3s ease;
+}
+
+.wish-icon:hover {
+    opacity: 100%;
+}

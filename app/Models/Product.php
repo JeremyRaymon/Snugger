@@ -10,6 +10,11 @@ class Product extends Model
     use HasFactory;
 
     public function cartItems() {
-        return $this->belongsTo(CartItem::class, "itemId", "id");
+        return $this->hasMany(CartItem::class);
+    }
+
+    public function wishItems()
+    {
+        return $this->hasMany(WishItem::class);
     }
 }

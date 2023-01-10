@@ -15,34 +15,41 @@ class CartItemSeeder extends Seeder
     public function run()
     {
         DB::table('cart_items')->insert([
-            'transactionId' => 1,
-            'itemId' => 1,
-            'qty' => 3
+            'userId' => 3,
+            'productId' => 1,
+            'qty' => 3,
+            'size' => 20
         ]);
         DB::table('cart_items')->insert([
-            'transactionId' => 1,
-            'itemId' => 2,
-            'qty' => 2
+            'userId' => 3,
+            'productId' => 3,
+            'qty' => 10,
+            'size' => 30
+        ]);
+
+        DB::table('cart_items')->insert([
+            'userId' => 4,
+            'productId' => 4,
+            'qty' => 10,
+            'size' => 50
         ]);
         DB::table('cart_items')->insert([
-            'transactionId' => 2,
-            'itemId' => 1,
-            'qty' => 1
+            'userId' => 4,
+            'productId' => 3,
+            'qty' => 20,
+            'size' => 30
         ]);
         DB::table('cart_items')->insert([
-            'transactionId' => 3,
-            'itemId' => 3,
-            'qty' => 2
+            'userId' => 4,
+            'productId' => 2,
+            'qty' => 1,
+            'size' => 90
         ]);
         DB::table('cart_items')->insert([
-            'transactionId' => 3,
-            'itemId' => 2,
-            'qty' => 6
-        ]);
-        DB::table('cart_items')->insert([
-            'transactionId' => 3,
-            'itemId' => 1,
-            'qty' => 3
+            'userId' => 4,
+            'productId' => 1,
+            'qty' => 9,
+            'size' => 10
         ]);
     }
 }
