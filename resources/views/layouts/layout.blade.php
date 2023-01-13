@@ -67,7 +67,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav">
                     <li class="nav-item me-2">
-                        <a class="nav-link" href="#">Products</a>
+                        <a class="nav-link" href="/productList">Products</a>
                     </li>
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="{{route('about')}}">About Us</a>
